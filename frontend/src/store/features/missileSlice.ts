@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
-interface Missile {
+export interface Missile {
   id: string;
   name: string;
   speed: number;
