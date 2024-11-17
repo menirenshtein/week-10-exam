@@ -9,6 +9,7 @@ import "./Weapons.css";
 import TableH from "./TableH";
 import TRow from "./TRow";
 
+
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const Weapons: FC = () => {
 
@@ -56,11 +57,12 @@ const Weapons: FC = () => {
     temp.push(thea)
     setThreats(temp)
   };
-
+ 
   return (
     <div className="Weapons">
       <div  className="launch">
       <h3>available missiles :</h3>
+      
       <div className="dir">
 
 
