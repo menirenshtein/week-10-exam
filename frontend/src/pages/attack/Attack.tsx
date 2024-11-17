@@ -1,54 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/stroe';
-import axios from 'axios';
-import { Missile, setMissiles } from '../../store/features/missileSlice';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import Organization from '../../types/organization';
+import { FC } from 'react';
+import Header from '../../components/attack/Header';
+import Table from '../../components/attack/Table';
+import Weapons from '../../components/attack/Weapons';
+import './Attack.css'
 
 
-const BASE_URL = import.meta.env.VITE_BASE_URL
-
-const AttackPage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { missiles } = useSelector((state: RootState) => state.missile);
-  const { organization } = useSelector((state: RootState) => state.user);
-//   const [missilesOrg, setmissiles] = useState<{name:string, amount:number}[] | ''>('')
-
-useEffect(() => {
-    (async () => {
-      try {
-        const [responseOrg, responseMis] = await Promise.all([
-          axios.get(`${BASE_URL}missiles/organization`),
-          axios.get(`${BASE_URL}missiles`)
-        ]);
-  
-        const org = responseOrg.data.find((o: Organization) => o.name === organization);
-        
-        console.log(responseOrg.data);
-        console.log(organization);
-        if (org) {
-            const missileNames = org.resources.map((r:any) => r.name);
-            dispatch(setMissiles(responseMis.data.filter((m: any) => missileNames.includes(m.name))));
-            console.log(missiles);
-        }
-      } catch (error) {
-        console.error('Failed to fetch missiles', error);
-      }
-    })();
-  }, [organization]);
-  
-
-
+const AttackPage:FC = () => {
+ 
   return (
-    <div>
-      <h2>organization: {} {organization}</h2>
-      <h3>available missiles :</h3>
-      <ul>
-        {missiles.map((missile) => (
-          <li key={missile.id}>{missile.name}</li>
-        ))}
-      </ul>
+    <div className='AttackPage'>
+      <Header/>
+      <Weapons/>
+      <Table/>     
     </div>
   );
 };

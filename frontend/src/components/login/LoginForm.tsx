@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/features/userSlice';
 import './LoginForm.css'
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/stroe';
+
 
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -14,7 +13,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL
 
 
 const LoginForm = () => {
-  const {user} = useSelector((state: RootState)=> state)
+  // const {user} = useSelector((state: RootState)=> state)
 
   const navigate = useNavigate()
   const dispatch =  useAppDispatch()
@@ -33,7 +32,6 @@ const LoginForm = () => {
   }
 
   const handleLogin = ()=>{
-    console.log('object');
     setTimeout(() => {
       navigate('/register')
   }, 500);
@@ -47,7 +45,6 @@ const LoginForm = () => {
 
     dispatch(setUser(foundUser));
     navigate(res.data.user.organization === 'IDF' ? '/defense' : '/attack');
-    console.log(user);
   } catch (err) {
     console.error(err);
   }
