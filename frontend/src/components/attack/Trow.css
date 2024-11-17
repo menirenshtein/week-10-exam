@@ -1,0 +1,32 @@
+.TRow{
+    width: 100%;
+    display: flex; 
+     flex-direction: row;
+    align-items: center;
+    justify-content: space-around; 
+}
+table{
+    width: 100%;
+
+}
+tbody{
+    width: 100%;
+
+}
+tr{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+td{ 
+    width: 33%;
+    border: 1px solid;
+    padding: 15px;
+    border-radius: 7px;
+    border-collapse: collapse;
+    background-color: rgb(214, 143, 143);
+    color: wheat;
+    
+} 
